@@ -1,0 +1,1 @@
+Use this : npx tailwindcss -i ./src/input.css -o ./src/output.css --watch and then Open with live server 
