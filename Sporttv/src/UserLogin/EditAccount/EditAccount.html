@@ -85,20 +85,194 @@
           </div>
         </div>
         <div class="flex justify-between items-center">
-          <!-- Search box -->
-          <div class="relative w-240">
+          <div class="relative w-[240px]">
             <button
               type="submit"
               class="absolute left-0 top-0 mt-1.5 ml-[10px]"
+              onclick="toggleSearchPopup()"
             >
               <i
                 class="fas fa-search text-gray-400 text-lg text-black bg-white"
               ></i>
             </button>
             <input
-              type="text"
-              class="w-full px-4 py-1 pl-10 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-blue-500"
+              type="button"
+              id="searchButton"
+              class="w-full py-1 pl-[35px] rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-blue-500"
             />
+          </div>
+
+          <div
+            id="searchModal"
+            class="fixed inset-0 bg-[#222629] bg-opacity-50 flex items-center justify-center hidden"
+          >
+            <div
+              class="p-6 rounded-lg shadow-md relative w-[650px] flex-col h-[660px] text-white"
+            >
+              <div
+                class="absolute top-[10px] pl-[30px] left-0 mt-2 ml-2 text-[40px]"
+              >
+                Search
+              </div>
+              <button
+                id="closeSearchModalButton"
+                class="absolute top-[30px] pr-[30px] right-0 mt-2 mr-2"
+              >
+                <i class="fa-solid fa-x fa-lg"></i>
+              </button>
+              <form class="px-[10px] pt-[80px]">
+                <div class="relative mb-4">
+                  <input
+                    type="text"
+                    id="searchInputModal"
+                    name="search"
+                    class="form-input px-4 py-2 border border-solid rounded border-[#585757] block bg-[#222629] p-2 w-full h-[50px] rounded-sm placeholder-[#585757]"
+                    placeholder="Search..."
+                  />
+
+                  <button
+                    id="searchDropdownButtonModal"
+                    class="absolute px-4 py-2 top-0 right-0 h-full text-white focus:outline-none"
+                  >
+                    All sport
+                    <i class="fas fa-caret-down"></i>
+                  </button>
+                  <div
+                    id="searchDropdownModal"
+                    class="hidden absolute z-10 top-full right-0 mt-2 bg-[#222629] rounded-md shadow-lg"
+                  >
+                    <ul class="py-1 pl-0">
+                      <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        All
+                      </li>
+                      <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        Articles
+                      </li>
+                      <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        Videos
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p>
+                  Please type at least 2 characters. The results will start
+                  displaying here immediately.
+                </p>
+                <div class="mt-4">
+                  <p class="text-yellow-300">Most Searched</p>
+                  <div class="w-full text-white">
+                    <div
+                      class="flex justify-between border rounded-lg border-solid border-gray-500 h-[55px]"
+                    >
+                      <div class="flex rounded-full">
+                        <i
+                          class="fa-light fa-manhole fa-xl py-[25px] px-4 rounded-full"
+                        ></i>
+                        <div class="mt-[2px]">
+                          <p class="mb-0">NFL</p>
+                          <p class="mb-0">American football, USA</p>
+                        </div>
+                      </div>
+
+                      <div class="rounded-full">
+                        <i
+                          class="fa-solid fa-star fa-lg py-[25px] px-4 rounded-full"
+                          style="color: #d6ce15"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full text-white">
+                    <div
+                      class="flex justify-between border rounded-lg border-solid border-gray-500 h-[55px] mt-[15px]"
+                    >
+                      <div class="flex rounded-full">
+                        <i
+                          class="fa-light fa-manhole fa-xl py-[25px] px-4 rounded-full"
+                        ></i>
+                        <div class="mt-[2px]">
+                          <p class="mb-0">NFL</p>
+                          <p class="mb-0">American football, USA</p>
+                        </div>
+                      </div>
+
+                      <div class="rounded-full">
+                        <i
+                          class="fa-solid fa-star fa-lg py-[25px] px-4 rounded-full"
+                          style="color: #d6ce15"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full text-white">
+                    <div
+                      class="flex justify-between border rounded-lg border-solid border-gray-500 h-[55px] mt-[15px]"
+                    >
+                      <div class="flex rounded-full">
+                        <i
+                          class="fa-light fa-manhole fa-xl py-[25px] px-4 rounded-full"
+                        ></i>
+                        <div class="mt-[2px]">
+                          <p class="mb-0">NFL</p>
+                          <p class="mb-0">American football, USA</p>
+                        </div>
+                      </div>
+
+                      <div class="rounded-full">
+                        <i
+                          class="fa-solid fa-star fa-lg py-[25px] px-4 rounded-full"
+                          style="color: #d6ce15"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full text-white">
+                    <div
+                      class="flex justify-between border rounded-lg border-solid border-gray-500 h-[55px] mt-[15px]"
+                    >
+                      <div class="flex rounded-full">
+                        <i
+                          class="fa-light fa-manhole fa-xl py-[25px] px-4 rounded-full"
+                        ></i>
+                        <div class="mt-[2px]">
+                          <p class="mb-0">NFL</p>
+                          <p class="mb-0">American football, USA</p>
+                        </div>
+                      </div>
+
+                      <div class="rounded-full">
+                        <i
+                          class="fa-solid fa-star fa-lg py-[25px] px-4 rounded-full"
+                          style="color: #d6ce15"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full text-white">
+                    <div
+                      class="flex justify-between border rounded-lg border-solid border-gray-500 h-[55px] mt-[15px]"
+                    >
+                      <div class="flex rounded-full">
+                        <i
+                          class="fa-light fa-manhole fa-xl py-[25px] px-4 rounded-full"
+                        ></i>
+                        <div class="mt-[2px]">
+                          <p class="mb-0">NFL</p>
+                          <p class="mb-0">American football, USA</p>
+                        </div>
+                      </div>
+
+                      <div class="rounded-full">
+                        <i
+                          class="fa-solid fa-star fa-lg py-[25px] px-4 rounded-full"
+                          style="color: #d6ce15"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
 
           <!-- Bell icon -->
@@ -699,6 +873,45 @@
           toTop.classList.add("active");
         } else {
           toTop.classList.remove("active");
+        }
+      });
+      const searchButton = document.getElementById("searchButton");
+      const searchModal = document.getElementById("searchModal");
+      const closeSearchModalButton = document.getElementById(
+        "closeSearchModalButton"
+      );
+      const searchDropdownButtonModal = document.getElementById(
+        "searchDropdownButtonModal"
+      );
+      const searchDropdownModal = document.getElementById(
+        "searchDropdownModal"
+      );
+      const searchInputModal = document.getElementById("searchInputModal");
+      // Thêm sự kiện click vào nút "Search"
+      searchButton.addEventListener("click", function (event) {
+        // Hiển thị form tìm kiếm modal
+        searchModal.classList.remove("hidden");
+      });
+
+      // Thêm sự kiện click vào nút dropdown modal
+      searchDropdownButtonModal.addEventListener("click", function (event) {
+        // Hiển thị dropdown modal
+        searchDropdownModal.classList.toggle("hidden");
+      });
+
+      // Thêm sự kiện click vào biểu tượng "X" trong form tìm kiếm modal
+      closeSearchModalButton.addEventListener("click", function (event) {
+        // Ẩn form tìm kiếm modal
+
+        searchModal.classList.add("hidden");
+        searchInputModal.value = "";
+      });
+
+      // Ẩn dropdown modal khi click ra ngoài
+      window.addEventListener("click", function (event) {
+        if (event.target === searchModal) {
+          searchModal.classList.add("hidden");
+          searchInputModal.value = "";
         }
       });
     </script>
