@@ -670,6 +670,10 @@ video {
   margin-left: 0.5rem;
 }
 
+.ml-\[-100px\] {
+  margin-left: -100px;
+}
+
 .ml-\[10px\] {
   margin-left: 10px;
 }
@@ -764,10 +768,6 @@ video {
 
 .mt-\[90px\] {
   margin-top: 90px;
-}
-
-.ml-\[-100px\] {
-  margin-left: -100px;
 }
 
 .block {
@@ -1203,10 +1203,6 @@ video {
 
 .pl-0 {
   padding-left: 0px;
-}
-
-.pl-10 {
-  padding-left: 2.5rem;
 }
 
 .pl-8 {

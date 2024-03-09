@@ -320,7 +320,7 @@
                 <div class="mb-4 flex items-center justify-center">
                   <input
                     type="text"
-                    id="email"
+                    id="emailInput"
                     name="email"
                     class="form-input block text-black bg-white p-2 w-[353px] h-[50px] mt-[15px] rounded-sm placeholder-black"
                     placeholder="Email"
@@ -329,7 +329,7 @@
                 <div class="mb-4 flex items-center justify-center">
                   <input
                     type="password"
-                    id="password"
+                    id="PasswordInput"
                     name="password"
                     class="form-input bg-white p-2 text-black block w-[353px] h-[50px] mt-[15px] rounded-sm placeholder-black"
                     placeholder="Password"
@@ -405,8 +405,8 @@
                 <div class="mb-4 flex items-center justify-center">
                   <input
                     type="text"
-                    id="username"
-                    name="username"
+                    id="LoginEmail"
+                    name="LoginEmail"
                     class="form-input text-black block bg-white p-2 w-[90%] h-[50px] mt-[15px] rounded-sm placeholder-black"
                     placeholder="Email"
                   />
@@ -414,9 +414,9 @@
                 <div class="mb-4 flex items-center justify-center">
                   <input
                     type="password"
-                    id="password"
+                    id="LoginPassword"
                     name="password"
-                    class="form-input bg-white p-2 block w-[90%] h-[50px] mt-[15px] rounded-sm placeholder-black"
+                    class="form-input bg-white p-2 block w-[90%] h-[50px] mt-[15px] rounded-sm text-black placeholder-black"
                     placeholder="Password"
                   />
                 </div>
@@ -1241,7 +1241,8 @@
       const loginModal = document.getElementById("loginModal");
       const goBackButton = document.getElementById("goBackButton");
       const closeModalButton = document.getElementById("closeModalButton");
-
+      const LoginInputEmail = document.getElementById("LoginEmail");
+      const LoginInputPassword = document.getElementById("LoginPassword");
       // Thêm sự kiện click vào nút "Log In"
       loginButton.addEventListener("click", function (event) {
         // Hiển thị form đăng nhập
@@ -1251,17 +1252,23 @@
       // Thêm sự kiện click vào nút "Go Back"
       goBackButton.addEventListener("click", function (event) {
         // Ẩn form đăng nhập
+        LoginInputEmail.value = "";
+        LoginInputPassword.value = "";
         loginModal.classList.add("hidden");
       });
 
       // Thêm sự kiện click vào biểu tượng "X"
       closeModalButton.addEventListener("click", function (event) {
         // Ẩn form đăng nhập
+        LoginInputEmail.value = "";
+        LoginInputPassword.value = "";
         loginModal.classList.add("hidden");
       });
 
       window.addEventListener("click", function (event) {
         if (event.target === loginModal) {
+          LoginInputEmail.value = "";
+          LoginInputPassword.value = "";
           loginModal.classList.add("hidden");
         }
       });
@@ -1272,6 +1279,8 @@
       const closeSignupModalButton = document.getElementById(
         "closeSignupModalButton"
       );
+      const signupEmail = document.getElementById("emailInput");
+      const signupPassword = document.getElementById("PasswordInput");
 
       // Show Signup Modal
       signupButton.addEventListener("click", function (event) {
@@ -1281,11 +1290,14 @@
       // Go Back to Login Modal
       goBackSignupButton.addEventListener("click", function (event) {
         signupModal.classList.add("hidden");
+        signupEmail.value = "";
+        signupPassword.value = "";
       });
 
       // Close Signup Modal
       closeSignupModalButton.addEventListener("click", function (event) {
-        signupModal.value = "";
+        signupEmail.value = "";
+        signupPassword.value = "";
         signupModal.classList.add("hidden");
       });
 
@@ -1293,6 +1305,8 @@
       window.addEventListener("click", function (event) {
         if (event.target === signupModal) {
           signupModal.classList.add("hidden");
+          signupEmail.value = "";
+          signupPassword.value = "";
         }
       });
 
