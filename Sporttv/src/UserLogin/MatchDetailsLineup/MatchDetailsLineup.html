@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SportTv</title>
+    <link rel="stylesheet" href="../../output.css" />
+    <link rel="stylesheet" href="MatchDetailsLineup.css" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="py-4" style="background-color: #222629">
+      <div
+        style="max-width: 90%"
+        class="container px-0 flex justify-between items-center"
+      >
+        <div class="flex justify-between items-center">
+          <div class="px-3">
+            <a href="#" class="text-white text-lg font-semibold">Logo</a>
+          </div>
+          <div class="hidden md:block">
+            <div class="flex justify-between items-center">
+              <div class="px-3 py-2">
+                <i class="fa-light fa-crown fa-lg" style="color: white"></i>
+                <a href="#" class="text-white hover:bg-gray-700 rounded-md"
+                  >Subscribe Now</a
+                >
+              </div>
+              <div class="px-3 py-2">
+                <i
+                  class="fa-light fa-signal-stream fa-lg"
+                  style="color: white"
+                ></i>
+                <a href="#" class="text-white hover:bg-gray-700 rounded-md"
+                  >Live Now</a
+                >
+              </div>
+              <div class="px-3 py-2">
+                <i class="fa-light fa-fire fa-lg" style="color: white"></i>
+                <a href="#" class="text-white hover:bg-gray-700 rounded-md"
+                  >Hot Match</a
+                >
+              </div>
+              <div class="px-3 py-2">
+                <i
+                  class="fa-light fa-circle-play fa-lg"
+                  style="color: white"
+                ></i>
+                <a href="#" class="text-white hover:bg-gray-700 rounded-md"
+                  >Videos</a
+                >
+              </div>
+              <div class="px-3 py-2">
+                <i class="fa-light fa-newspaper fa-lg" style="color: white"></i>
+                <a href="#" class="text-white hover:bg-gray-700 rounded-md"
+                  >News</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-between items-center">
+          <div class="relative w-[240px]">
+            <button
+              type="submit"
+              class="absolute left-0 top-0 mt-1.5 ml-[10px]"
+              onclick="toggleSearchPopup()"
+            >
+              <i
+                class="fas fa-search text-gray-400 text-lg text-black bg-white"
+              ></i>
+            </button>
+            <input
+              type="button"
+              id="searchButton"
+              class="w-full py-1 pl-[35px] rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-blue-500"
+            />
+          </div>
+
+          <div
+            id="searchModal"
+            class="fixed inset-0 bg-[#222629] bg-opacity-50 flex items-center justify-center hidden"
+          >
+            <div
+              class="p-6 rounded-lg shadow-md relative w-[650px] flex-col h-[660px] text-white"
+            >
+              <div
+                class="absolute top-[10px] pl-[30px] left-0 mt-2 ml-2 text-[40px]"
+              >
+                Search
+              </div>
+              <button
+                id="closeSearchModalButton"
+                class="absolute top-[30px] pr-[30px] right-0 mt-2 mr-2"
+              >
+                <i class="fa-solid fa-x fa-lg"></i>
+              </button>
+              <form class="px-[10px] pt-[80px]">
+                <div class="relative mb-4">
+                  <input
+                    type="text"
+                    id="searchInputModal"
+                    name="search"
+                    class="form-input px-4 py-2 border border-solid rounded border-[#585757] block bg-[#222629] p-2 w-full h-[50px] rounded-sm placeholder-[#585757]"
+                    placeholder="Search..."
+                  />
+
+                  <button
+                    id="searchDropdownButtonModal"
+                    class="absolute px-4 py-2 top-0 right-0 h-full text-white focus:outline-none"
+                  >
+                    All sport
+                    <i class="fas fa-caret-down"></i>
+                  </button>
+                  <div
+                    id="searchDropdownModal"
+                    class="hidden absolute z-10 top-full right-0 mt-2 bg-[#222629] rounded-md shadow-lg"
+                  >
+                    <ul class="py-1 pl-0">
+                      <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        All
+                      </li>
+                      <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        Articles
+                      </li>
+                      <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                        Videos
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p>
+                  Please type at least 2 characters. The results will start
+                  displaying here immediately.
+                </p>
+                <div class="mt-4">
+                  <p class="text-yellow-300">Most Searched</p>
+                  <div class="w-full text-white">
+                    <div
+                      class="flex justify-between border rounded-lg border-solid border-gray-500 h-[55px]"
+                    >
+                      <div class="flex rounded-full">
+                        <i
+                          class="fa-light fa-manhole fa-xl py-[25px] px-4 rounded-full"
+                        ></i>
+                        <div class="mt-[2px]">
+                          <p class="mb-0">NFL</p>
+                          <p class="mb-0">American football, USA</p>
+                        </div>
+                      </div>
+
+                      <div class="rounded-full">
+                        <i
+                          class="fa-solid fa-star fa-lg py-[25px] px-4 rounded-full"
+                          style="color: #d6ce15"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full text-white">
+                    <div
+                      class="flex justify-between border rounded-lg border-solid border-gray-500 h-[55px] mt-[15px]"
+                    >
+                      <div class="flex rounded-full">
+                        <i
+                          class="fa-light fa-manhole fa-xl py-[25px] px-4 rounded-full"
+                        ></i>
+                        <div class="mt-[2px]">
+                          <p class="mb-0">NFL</p>
+                          <p class="mb-0">American football, USA</p>
+                        </div>
+                      </div>
+
+                      <div class="rounded-full">
+                        <i
+                          class="fa-solid fa-star fa-lg py-[25px] px-4 rounded-full"
+                          style="color: #d6ce15"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full text-white">
+                    <div
+                      class="flex justify-between border rounded-lg border-solid border-gray-500 h-[55px] mt-[15px]"
+                    >
+                      <div class="flex rounded-full">
+                        <i
+                          class="fa-light fa-manhole fa-xl py-[25px] px-4 rounded-full"
+                        ></i>
+                        <div class="mt-[2px]">
+                          <p class="mb-0">NFL</p>
+                          <p class="mb-0">American football, USA</p>
+                        </div>
+                      </div>
+
+                      <div class="rounded-full">
+                        <i
+                          class="fa-solid fa-star fa-lg py-[25px] px-4 rounded-full"
+                          style="color: #d6ce15"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full text-white">
+                    <div
+                      class="flex justify-between border rounded-lg border-solid border-gray-500 h-[55px] mt-[15px]"
+                    >
+                      <div class="flex rounded-full">
+                        <i
+                          class="fa-light fa-manhole fa-xl py-[25px] px-4 rounded-full"
+                        ></i>
+                        <div class="mt-[2px]">
+                          <p class="mb-0">NFL</p>
+                          <p class="mb-0">American football, USA</p>
+                        </div>
+                      </div>
+
+                      <div class="rounded-full">
+                        <i
+                          class="fa-solid fa-star fa-lg py-[25px] px-4 rounded-full"
+                          style="color: #d6ce15"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full text-white">
+                    <div
+                      class="flex justify-between border rounded-lg border-solid border-gray-500 h-[55px] mt-[15px]"
+                    >
+                      <div class="flex rounded-full">
+                        <i
+                          class="fa-light fa-manhole fa-xl py-[25px] px-4 rounded-full"
+                        ></i>
+                        <div class="mt-[2px]">
+                          <p class="mb-0">NFL</p>
+                          <p class="mb-0">American football, USA</p>
+                        </div>
+                      </div>
+
+                      <div class="rounded-full">
+                        <i
+                          class="fa-solid fa-star fa-lg py-[25px] px-4 rounded-full"
+                          style="color: #d6ce15"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Bell icon -->
+          <div class="px-2">
+            <div class="relative">
+              <i class="fa-regular fa-bell fa-lg" style="color: white"></i>
+              <div
+                class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-4 h-4 bg-red-500 text-white rounded text-xs"
+              >
+                3
+              </div>
+            </div>
+          </div>
+
+          <!-- Favorite link -->
+          <div class="md:block px-3 py-2">
+            <i class="fa-solid fa-star fa-lg" style="color: white"></i>
+            <a href="#" class="text-white hover:bg-gray-700 rounded-md"
+              >Favorite</a
+            >
+          </div>
+
+          <!-- Dropdown button -->
+          <div class="md:block px-3 py-2 relative">
+            <button
+              id="dropdownButton"
+              class="flex items-center justify-center px-2 py-1 text-black rounded-lg"
+              style="background-color: #d6ce15"
+            >
+              <i
+                class="fab fa-google fa-rotate-270 fa-lg mr-2"
+                style="color: #4678eb"
+              ></i>
+              Gravatar
+            </button>
+
+            <!-- Dropdown menu -->
+            <div
+              id="dropdownMenu"
+              class="hidden absolute left-0 mt-2 w-64 rounded-lg shadow-md"
+              style="background-color: #010a0f"
+            >
+              <a href="#" class="block px-4 py-2" style="color: #d6ce15">
+                <i
+                  class="fa-regular fa-circle fa-lg px-2"
+                  style="color: #d6ce15"
+                ></i>
+                Go Premium Now
+              </a>
+
+              <a href="#" class="block px-4 py-2" style="color: white">
+                <i
+                  class="fa-light fa-circle-exclamation fa-lg px-2"
+                  style="color: white"
+                ></i>
+                Account Information
+              </a>
+              <a href="#" class="block px-4 py-2" style="color: white"
+                ><i
+                  class="fa-light fa-lock-keyhole fa-lg px-2"
+                  style="color: white"
+                ></i>
+                Change Password
+              </a>
+
+              <a href="#" class="block px-4 py-2" style="color: white">
+                <i
+                  class="fa-light fa-user-xmark fa-lg px-2"
+                  style="color: white"
+                ></i>
+                Delete Account
+              </a>
+              <a href="#" class="block px-4 py-2" style="color: #d6ce15">
+                <i
+                  class="fa-light fa-arrow-up-left-from-circle fa-lg px-2"
+                  style="color: #d6ce15"
+                ></i>
+                Log Out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="flex" style="background-color: #222629">
+      <div class="w-64 flex flex-col" style="background-color: #222629">
+        <nav class="menuside flex-1 px-4 py-4">
+          <ul class="pl-0">
+            <li class="mb-4 rounded-r-full hover:bg-gray-700">
+              <a
+                href="#"
+                class="inline-block w-full py-2 pl-8 pr-4"
+                style="color: white"
+              >
+                <i
+                  class="fa-light fa-sportsball fa-lg px-2"
+                  style="color: white"
+                >
+                </i>
+                Sport</a
+              >
+            </li>
+            <li class="mb-4 rounded-r-full hover:bg-gray-700">
+              <a
+                href="#"
+                class="inline-block w-full py-2 pl-8 pr-4"
+                style="color: white"
+              >
+                <i
+                  class="fa-light fa-gamepad-modern fa-lg px-2"
+                  style="color: white"
+                ></i>
+                Games</a
+              >
+            </li>
+            <li class="mb-4 rounded-r-full hover:bg-gray-700">
+              <a
+                href="#"
+                class="inline-block w-full py-2 pl-8 pr-4"
+                style="color: white"
+              >
+                <i
+                  class="fa-light fa-game-console-handheld fa-lg px-2"
+                  style="color: white"
+                ></i>
+                Esport</a
+              >
+            </li>
+            <li class="mb-4 rounded-r-full hover:bg-gray-700">
+              <a
+                href="#"
+                class="inline-block w-full py-2 pl-8 pr-4"
+                style="color: white"
+              >
+                <i
+                  class="fa-light fa-tv-retro fa-lg px-2"
+                  style="color: white"
+                ></i>
+                TV</a
+              >
+            </li>
+            <li class="mb-4 rounded-r-full hover:bg-gray-700">
+              <a
+                href="#"
+                class="inline-block w-full py-2 pl-8 pr-4"
+                style="color: white"
+              >
+                <i
+                  class="fa-light fa-circle-dollar fa-lg px-2"
+                  style="color: white"
+                ></i>
+                Pricing</a
+              >
+            </li>
+            <li class="mb-4 rounded-r-full hover:bg-gray-700">
+              <a
+                href="#"
+                class="inline-block w-full py-2 pl-8 pr-4"
+                style="color: white"
+              >
+                <i class="fa-light fa-star fa-lg px-2" style="color: white"></i>
+                My Team</a
+              >
+            </li>
+            <li class="mb-4">
+              <a
+                href="#"
+                class="inline-block w-full py-2 pl-8 pr-4 text-xs"
+                style="color: #d6ce15"
+                >+ADD THE TEAM</a
+              >
+            </li>
+          </ul>
+
+          <div class="border-b border-gray-500"></div>
+          <div class="allLeagues flex-1 px-4 pt-4">
+            <h2 class="text-lg" style="color: white">All Leagues</h2>
+            <ul class="pl-0">
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full mt-2 py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i class="flag flag-england"></i>
+                  Premier League</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i class="flag flag-european-union"></i>
+                  AFC Chamipons League
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i class="flag flag-european-union"></i>
+                  AFC Cup
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i class="flag flag-european-union"></i>
+                  Champion League
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i class="flag flag-germany"></i>
+                  Bundesliga</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i class="flag flag-france"></i>
+                  Lique 1</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i class="flag flag-spain"></i>
+                  La Liga</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i class="flag flag-united-states"></i>
+                  NBA</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i class="fa-light fa-globe"></i>
+                  World Cup</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="other flex-1 px-4">
+            <h2 class="text-lg" style="color: white">Other categories</h2>
+            <ul class="pl-0">
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full mt-2 py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i
+                    class="fa-solid fa-earth-africa"
+                    style="color: #74c0fc"
+                  ></i>
+                  Africa</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i class="fa-solid fa-earth-asia" style="color: #74c0fc"></i>
+                  Asia</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i
+                    class="fa-solid fa-earth-europe"
+                    style="color: #74c0fc"
+                  ></i>
+                  Europe</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-block w-full py-4 pr-2 text-sm"
+                  style="color: white"
+                >
+                  <i
+                    class="fa-solid fa-earth-americas"
+                    style="color: #74c0fc"
+                  ></i>
+                  South America</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="flex-1 px-4 py-4 text-white">
+        <div class="flex">
+          <div class="flex">
+            <i class="fa-light fa-futbol fa-lg mt-[13px] mr-[10px]"></i>
+            <a href="#" style="font-size: 18px; color: white">Soccer</a>
+          </div>
+          <i class="fa-light fa-chevron-right mt-[7px] mx-[20px]"></i>
+          <div class="flex">
+            <i class="flag flag-england fa-lg !mt-[7px] !mr-[10px]"></i>
+            <a href="#" style="font-size: 18px; color: white"
+              >Premier League : Round 13</a
+            >
+          </div>
+        </div>
+
+        <h3 class="mt-[30px]">
+          Watch Football match livestream Melbourne Victory W vs Sydney W on
+          2024-01-26
+        </h3>
+        <p class="mt-[20px]">
+          You can watch with Member. Please Login or Sign up and Enjoy!
+        </p>
+        <div class="text-white w-full pr-[50px]">
+          <img
+            class="w-full h-[650px] object-cover"
+            src="./img/tv.png"
+            alt="TV"
+          />
+          <div class="flex font-bold">
+            <div
+              class="flex h-[200px] w-1/5 justify-center items-center bg-[#474B4F]"
+            >
+              <i
+                class="fa-light fa-crown fa-lg mr-[20px]"
+                style="color: white"
+              ></i>
+              <a
+                href="#"
+                class="text-white bg-[#474B4F] hover:bg-gray-700 rounded-md"
+                >Subscribe Now</a
+              >
+            </div>
+            <div
+              class="flex h-[200px] w-1/5 justify-center items-center bg-[#474B4F]"
+            >
+              <i class="fa-solid fa-star fa-2xl mr-[20px] text-[#D6CE15]"></i>
+              <div
+                class="bg-[#474B4F] flex flex-col justify-center items-center"
+              >
+                <div
+                  class="border rounded-lg h-[115px] w-[115px] bg-[#D9D9D9]"
+                ></div>
+                <p class="bg-[#474B4F] mt-[20px] mb-0">Manchester United</p>
+              </div>
+            </div>
+            <div
+              class="flex flex-col h-[200px] w-1/5 justify-center items-center bg-[#474B4F]"
+            >
+              <p class="bg-[#474B4F] font-bold text-[20px]">
+                Sun, 21 Jan, 18:00
+              </p>
+              <div
+                class="bg-[#474B4F] w-[180px] h-[50px] flex items-center justify-center text-[50px] font-mono"
+              >
+                0 - 0
+              </div>
+              <p class="bg-[#474B4F] mt-4">Upcoming</p>
+            </div>
+            <div
+              class="flex h-[200px] w-1/5 justify-center items-center bg-[#474B4F]"
+            >
+              <div
+                class="bg-[#474B4F] flex flex-col justify-center items-center"
+              >
+                <div
+                  class="border rounded-lg h-[115px] w-[115px] bg-[#D9D9D9]"
+                ></div>
+                <p class="bg-[#474B4F] mt-[20px] mb-0">Manchester United</p>
+              </div>
+              <i class="fa-light fa-star fa-2xl ml-[20px] text-[#D6CE15]"></i>
+            </div>
+            <div
+              class="flex h-[200px] w-1/5 justify-center items-center bg-[#474B4F]"
+            >
+              <i class="fa-sharp fa-solid fa-paper-plane fa-lg mr-[20px]"></i>
+              <i class="fa-brands fa-facebook fa-lg mr-[20px]"></i>
+              <i class="fa-solid fa-share fa-lg mr-[20px]"></i>
+            </div>
+          </div>
+        </div>
+        <div class="pt-[30px]">
+          <button
+            type="submit"
+            class="font-medium bg-transparent mt-[20px] ml-[20px] text-white w-[120px] h-[40px] font-bold rounded-xl"
+          >
+            Sumary
+          </button>
+          <button
+            type="submit"
+            class="font-medium bg-yellow-300 mt-[20px] text-black w-[120px] h-[40px] font-bold rounded-xl"
+          >
+            Line Up
+          </button>
+        </div>
+        <div class="mt-[20px] w-[97%]">
+          <div class="flex justify-between bg-[#D6CE15] rounded-lg">
+            <div class="flex bg-[#D6CE15] my-3 mx-4">
+              <img
+                class="text-black bg-[#D6CE15] px-2 h-[30px]"
+                src="./img/MU.png"
+                alt=""
+              />
+              <p class="text-black bg-[#D6CE15] text-[18px] px-2 font-[500]">
+                Man Utd
+              </p>
+              <p class="text-black bg-[#D6CE15] text-[18px] px-2 font-[500]">
+                4-2-3-1
+              </p>
+            </div>
+            <div class="flex bg-[#D6CE15] my-3 mx-4">
+              <p class="text-black bg-[#D6CE15] text-[18px] px-2 font-[500]">
+                4-3-3
+              </p>
+
+              <p class="text-black bg-[#D6CE15] text-[18px] px-2 font-[500]">
+                Man Utd
+              </p>
+              <img
+                class="text-black bg-[#D6CE15] px-2 h-[30px]"
+                src="./img/MU.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="h-[600px] w-[97%] bg-[#474B4F] flex items-center justify-center"
+        >
+          <img class="w-auto" src="./img/Lineup.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="to-top flex font-bold">
+      <i class="fa-light fa-chevrons-up" style="color: white"> </i>
+      <span
+        class="text-white h-[2px] mt-[5px]"
+        style="font-size: 15px; background-color: #363636"
+        >Top
+      </span>
+    </a>
+    <!-- Content component -->
+
+    <!-- Content component End -->
+
+    <!-- Footer -->
+
+    <footer>
+      <div class="pt-[50px] flex justify-center items-center py-[50px]">
+        <img src="../../img/FooterImage/1.png" alt="" />
+        <img src="../../img/FooterImage/2.png" alt="" />
+        <img src="../../img/FooterImage/3.png" alt="" />
+        <img src="../../img/FooterImage/4.png" alt="" />
+        <img src="../../img/FooterImage/5.png" alt="" />
+        <img src="../../img/FooterImage/6.png" alt="" />
+        <img src="../../img/FooterImage/7.png" alt="" />
+        <img src="../../img/FooterImage/8.png" alt="" />
+        <img src="../../img/FooterImage/9.png" alt="" />
+        <img src="../../img/FooterImage/10.png" alt="" />
+        <img src="../../img/FooterImage/11.png" alt="" />
+        <img src="../../img/FooterImage/12.png" alt="" />
+        <img src="../../img/FooterImage/13.png" alt="" />
+        <img src="../../img/FooterImage/14.png" alt="" />
+      </div>
+      <div class="mx-auto border-b-2 border-gray-500 w-[70%]"></div>
+      <div class="flex justify-center items-center">
+        <div class="footer w-full text-white">
+          <div
+            class="top grid gay-10 py-[50px] lg:grid-cols-4 px-[15%] grid-cols-2 md:grid-cols-3"
+          >
+            <div class="cols col-span-1">
+              <div
+                class="flex gap-3 my-3 text-[#FFFFFFCC] duration-300 text-yellow-300"
+              >
+                <h5>PREMIUMSPORT.TV</h5>
+              </div>
+              <div
+                class="flex gap-3 my-3 text-[#FFFFFFCC] hover:text-yellow-200 duration-300 cursor-pointer"
+              >
+                Terms of Use
+              </div>
+              <div
+                class="flex gap-3 my-3 text-[#FFFFFFCC] hover:text-yellow-200 duration-300 cursor-pointer"
+              >
+                Privacy policy
+              </div>
+              <div
+                class="flex gap-3 my-3 text-[#FFFFFFCC] hover:text-yellow-200 duration-300 cursor-pointer"
+              >
+                GDPR and Journalism
+              </div>
+              <div
+                class="flex gap-3 my-3 text-[#FFFFFFCC] hover:text-yellow-200 duration-300 cursor-pointer"
+              >
+                Advertise
+              </div>
+            </div>
+            <div class="col-span-1">
+              <li
+                class="list-none my-3 text-lg text-[#FFFFFFCC] text-yellow-300 duration-300 leading--[40px] tracking-[0.01em]"
+              >
+                <h5>Useful Links</h5>
+              </li>
+              <li
+                class="list-none my-3 text-lg text-[#FFFFFFCC] hover:text-yellow-200 duration-300 cursor-pointer leading--[40px] tracking-[0.01em]"
+              >
+                Contact
+              </li>
+              <li
+                class="list-none my-3 text-lg text-[#FFFFFFCC] hover:text-yellow-200 duration-300 cursor-pointer leading--[40px] tracking-[0.01em]"
+              >
+                Recommended Sites
+              </li>
+              <li
+                class="list-none my-3 text-lg text-[#FFFFFFCC] hover:text-yellow-200 duration-300 cursor-pointer leading--[40px] tracking-[0.01em]"
+              >
+                Audio
+              </li>
+            </div>
+            <div class="cols col-span-1">
+              <li
+                class="list-none my-3 text-lg text-[#FFFFFFCC] text-yellow-300 duration-300 leading--[40px] tracking-[0.01em]"
+              >
+                <h5>FOLLOW US</h5>
+              </li>
+              <li
+                class="list-none my-3 text-lg text-[#FFFFFFCC] hover:text-yellow-200 duration-300 cursor-pointer leading--[40px] tracking-[0.01em]"
+              >
+                <i class="fa-brands fa-facebook fa-lg pr-2"></i>
+                Facebook
+              </li>
+              <li
+                class="list-none my-3 text-lg text-[#FFFFFFCC] hover:text-yellow-200 duration-300 cursor-pointer leading--[40px] tracking-[0.01em]"
+              >
+                <i class="fa-brands fa-instagram fa-lg pr-2"></i>
+                Instagram
+              </li>
+              <li
+                class="list-none my-3 text-lg text-[#FFFFFFCC] hover:text-yellow-200 duration-300 cursor-pointer leading--[40px] tracking-[0.01em]"
+              >
+                <i class="fa-sharp fa-solid fa-paper-plane fa-lg pr-2"></i>
+                Telegram
+              </li>
+            </div>
+
+            <div class="cols col-span-1">
+              <li
+                class="list-none my-3 text-lg text-[#FFFFFFCC] text-yellow-300 duration-300 leading--[40px] tracking-[0.01em]"
+              >
+                <h5>On Mobile Device</h5>
+              </li>
+              <li
+                class="list-none my-3 text-lg text-[#FFFFFFCC] duration-300 leading--[40px] tracking-[0.01em]"
+              >
+                Our website is optimized for your phone
+              </li>
+            </div>
+          </div>
+          <div
+            class="mx-auto mt-[-50px] border-b-2 border-gray-700 w-[70%]"
+          ></div>
+          <div
+            class="bottom flex justify-center gap-5 md:justify-between flex-wrap px-[15%] pt-[5%]"
+          >
+            <div class="left">
+              From April 1, 2023, Premiumsport s.r.o. became the operator of
+              this service. <br />
+              Copyright © 2012-23 Premiumsport.tv.<br />
+              Set privacy
+            </div>
+            <div class="right">
+              <img
+                class="mt-[-175px] h-[35vh]"
+                src="../../img/FooterImage/iPhone 15 Pro.png"
+                alt="Ip15"
+                srcset=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const dropdownButton = document.getElementById("dropdownButton");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+
+      dropdownButton.addEventListener("click", function () {
+        dropdownMenu.classList.toggle("hidden");
+      });
+
+      const toTop = document.querySelector(".to-top");
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 100) {
+          toTop.classList.add("active");
+        } else {
+          toTop.classList.remove("active");
+        }
+      });
+      const searchButton = document.getElementById("searchButton");
+      const searchModal = document.getElementById("searchModal");
+      const closeSearchModalButton = document.getElementById(
+        "closeSearchModalButton"
+      );
+      const searchDropdownButtonModal = document.getElementById(
+        "searchDropdownButtonModal"
+      );
+      const searchDropdownModal = document.getElementById(
+        "searchDropdownModal"
+      );
+      const searchInputModal = document.getElementById("searchInputModal");
+      // Thêm sự kiện click vào nút "Search"
+      searchButton.addEventListener("click", function (event) {
+        // Hiển thị form tìm kiếm modal
+        searchModal.classList.remove("hidden");
+      });
+
+      // Thêm sự kiện click vào nút dropdown modal
+      searchDropdownButtonModal.addEventListener("click", function (event) {
+        // Hiển thị dropdown modal
+        searchDropdownModal.classList.toggle("hidden");
+      });
+
+      // Thêm sự kiện click vào biểu tượng "X" trong form tìm kiếm modal
+      closeSearchModalButton.addEventListener("click", function (event) {
+        // Ẩn form tìm kiếm modal
+
+        searchModal.classList.add("hidden");
+        searchInputModal.value = "";
+      });
+
+      // Ẩn dropdown modal khi click ra ngoài
+      window.addEventListener("click", function (event) {
+        if (event.target === searchModal) {
+          searchModal.classList.add("hidden");
+          searchInputModal.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>
